@@ -63,7 +63,6 @@ fun MainScreen() {
                 ProjectMenuContent("Calculator", R.drawable.skill),
                 ProjectMenuContent("Calculator", R.drawable.skill),
                 ProjectMenuContent("Calculator", R.drawable.skill),
-                ProjectMenuContent("Calculator", R.drawable.skill),
             ))
         }
 

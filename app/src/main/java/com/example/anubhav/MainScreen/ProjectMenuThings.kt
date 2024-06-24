@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.anubhav.R
 import com.example.anubhav.ui.theme.main_orange
 import com.example.anubhav.ui.theme.main_purple
+import com.example.anubhav.ui.theme.main_white
 import com.example.anubhav.ui.theme.main_yellow
 
 
@@ -33,11 +34,12 @@ import com.example.anubhav.ui.theme.main_yellow
 fun ProjectMenu(items: List<ProjectMenuContent>) {
     LazyRow {
         itemsIndexed(items){index, item2 ->
-            val colInd = (index - 3) % 3
+            val colInd = index % 3
             val color: Color = when (colInd) {
                 0 -> main_yellow
                 1 -> main_purple
-                else -> main_orange
+                2 -> main_orange
+                else -> main_white
             }
             ProjectMenuItem(item = item2, color = color)
 
