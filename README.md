@@ -28,6 +28,6 @@ Discover more about me and my projects through the app:
 
 ## Contact
 Let's connect! Reach out to me via:
-- Email: [your-email@example.com](mailto:anubhavjaiswal2002@gmail.com)
+- Email: [anubhavjaiswal2002@gmail.com](anubhavjaiswal2002@gmail.com)
 - LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/anubhav-jaiswal-95365524b)
 - GitHub: [Your GitHub Profile](https://github.com/anubhav-auth)
