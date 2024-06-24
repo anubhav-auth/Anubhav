@@ -3,7 +3,7 @@
 ![App Logo or Screenshot Here]
 
 ## Overview
-Welcome to my Android Project Portfolio App! This application serves as a showcase for all my Android projects, offering a convenient way to explore and showcase my work in one place.
+Welcome to my Android Project Portfolio App! This application showcases all my Android projects, offering a convenient way to explore and showcase my work in one place.
 
 ## Key Features
 - **Centralized Portfolio**: Access all my Android projects from a single app.
@@ -12,7 +12,7 @@ Welcome to my Android Project Portfolio App! This application serves as a showca
 - **Interactive Navigation**: Intuitive user interface for effortless browsing through projects.
 
 ## Installation
-To install my portfolio app, download the latest release from the [Releases](link-to-releases) page. Choose the APK file compatible with your Android device, then follow these steps:
+To install my portfolio app, download the latest release from the [Releases](https://github.com/anubhav-auth/Anubhav/releases/new) page. Choose the APK file compatible with your Android device, then follow these steps:
 
 1. **Download APK**: Download the APK file to your Android device.
 2. **Install APK**: Open the APK file and follow the on-screen instructions to install the app.
@@ -24,11 +24,10 @@ Discover more about me and my projects through the app:
 - **About Me**: Find information about me, the developer, including contact details, LinkedIn profile link, and email address.
 - **Portfolio Updates**: Check regularly for updates as new projects are added or existing ones are enhanced.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](link-to-license) file for more details.
+
 
 ## Contact
 Let's connect! Reach out to me via:
-- Email: [your-email@example.com](mailto:your-email@example.com)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourusername)
-- GitHub: [Your GitHub Profile](https://github.com/yourusername)
+- Email: [your-email@example.com](mailto:anubhavjaiswal2002@gmail.com)
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/anubhav-jaiswal-95365524b)
+- GitHub: [Your GitHub Profile](https://github.com/anubhav-auth)
