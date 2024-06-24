@@ -1,16 +1,8 @@
 package com.example.anubhav.Calculator
 
-import android.content.Context
-import android.widget.Toast
-import androidx.compose.animation.core.EaseInOutBack
-import androidx.compose.animation.core.EaseOutBounce
-import androidx.compose.animation.core.EaseOutQuint
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.estimateAnimationDurationMillis
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -39,18 +31,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.draw.blur
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -63,11 +51,11 @@ import com.example.anubhav.ui.theme.GradColor1
 import com.example.anubhav.ui.theme.NumButtonColor
 import com.example.anubhav.ui.theme.GradColor2
 
-import com.example.scientificcalculator.sharedStateViewModel
+import com.example.anubhav.SharedStateViewModel
 import org.mariuszgromada.math.mxparser.*
 @Composable
 fun HomeScreen() {
-    val viewModel: sharedStateViewModel = viewModel()
+    val viewModel: SharedStateViewModel = viewModel()
     val state by animateDpAsState(
         targetValue = viewModel.sizeState,
         spring(
@@ -102,7 +90,7 @@ fun HomeScreen() {
 
 @Composable
 fun display() {
-    val viewModel: sharedStateViewModel = viewModel()
+    val viewModel: SharedStateViewModel = viewModel()
     var interactionSource = remember { MutableInteractionSource() }
 
     Card(
@@ -308,7 +296,7 @@ fun display() {
 
 @Composable
 fun sciKeyPad(ButtonSize: Dp, rowSize: Dp) {
-    val viewModel: sharedStateViewModel = viewModel()
+    val viewModel: SharedStateViewModel = viewModel()
     val answer = Expression(viewModel.element)
 
     if (!viewModel.angleUnitState) mXparser.setRadiansMode()
@@ -1161,7 +1149,7 @@ fun sciKeyPad(ButtonSize: Dp, rowSize: Dp) {
 @Composable
 fun normKeyPad(ButtonSize: Dp = 75.dp) {
 
-    val viewModel: sharedStateViewModel = viewModel()
+    val viewModel: SharedStateViewModel = viewModel()
 
     Row(
         modifier = Modifier

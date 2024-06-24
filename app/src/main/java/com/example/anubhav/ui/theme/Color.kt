@@ -16,3 +16,16 @@ val GradColor2 = Color(0xFF8B9F9D)
 val ButtonColor = Color(0xFFAFBBB7)
 val NumButtonColor = Color(0xFFE6E7E2)
 val ButtonTextColor = Color.Black
+
+//homescreen
+val main_black = Color(0xFF1A1A1A)
+val main_yellow = Color(0xFFF5F378)
+val main_purple = Color(0xFFDCC1FF)
+val main_orange = Color(0xFFEC704B)
+val main_grey = Color(0xFF2F2F2F)
+val main_white = Color(0xFFFFFFFF)
+
+//for buttonpress
+val main_purpleDark = Color(0xFFAB93E0)
+val main_yellowDark = Color(0xFFDFDD56)
+val text_grey = Color(0xFF6C6C6C)
