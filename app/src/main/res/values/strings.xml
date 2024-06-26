@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Anubhav</string>
+    <string name="description">I\'m a beginner Android developer and BTech CSE student passionate about building apps that help people.\n\nCheck out my skills and projects below!</string>
+    <string name="calc_intro">his versatile tool seamlessly transitions between scientific and basic calculation modes, offering users a comprehensive solution for all their mathematical needs. Whether you\'re solving complex equations or performing everyday arithmetic, our app provides an intuitive interface and powerful functionality. Designed with simplicity and efficiency in mind, it\'s the perfect companion for students, professionals, and anyone who appreciates precision and versatility in their calculations. Dive in to explore the full potential of our dynamic Calculator app</string>
+    <string name="notes_intro">The Notes App is a versatile and user-friendly application designed for capturing and organizing your thoughts, tasks, and ideas efficiently. With a clean and intuitive interface, it allows users to create, edit, and categorize notes effortlessly. Features include text formatting, voice memos, image attachments, and synchronization across devices for seamless access. The app also offers search functionality, reminders, and data encryption to ensure your information is both accessible and secure. Ideal for students, professionals, and anyone looking to keep their notes organized and accessible, the Notes App is your go-to digital notebook.</string>
+<!--    <string name="app_name">Anubhav</string>-->
+
 </resources>

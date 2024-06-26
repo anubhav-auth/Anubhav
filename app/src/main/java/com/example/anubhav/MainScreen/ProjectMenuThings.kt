@@ -8,8 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -23,47 +24,35 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.anubhav.R
-import com.example.anubhav.ui.theme.main_orange
-import com.example.anubhav.ui.theme.main_purple
-import com.example.anubhav.ui.theme.main_white
-import com.example.anubhav.ui.theme.main_yellow
-
+import com.example.anubhav.ui.theme.main_grey
 
 
 @Composable
 fun ProjectMenu(items: List<ProjectMenuContent>) {
-    LazyRow {
-        itemsIndexed(items){index, item2 ->
-            val colInd = index % 3
-            val color: Color = when (colInd) {
-                0 -> main_yellow
-                1 -> main_purple
-                2 -> main_orange
-                else -> main_white
-            }
-            ProjectMenuItem(item = item2, color = color)
 
+    LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        itemsIndexed(items) { index, item ->
+
+            ProjectMenuItem(item = item)
         }
     }
+
 }
 
 @Composable
-fun ProjectMenuItem(item: ProjectMenuContent, color: Color) {
+fun ProjectMenuItem(item: ProjectMenuContent, color: Color = main_grey) {
     Box(
         modifier = Modifier
-            .padding(10.dp)
             .clip(RoundedCornerShape(16.dp))
-//            .padding(5.dp)
-            .size(height = 150.dp, width = 175.dp)
+            .size(height = 180.dp, width = 180.dp)
             .background(color)
-
     ) {
         Icon(
             painter = painterResource(id = item.iconId),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 20.dp)
+                .padding(start = 10.dp)
         )
         Column(
             modifier = Modifier
@@ -84,12 +73,18 @@ data class ProjectMenuContent(
 
 @Preview
 @Composable
-fun pre1(modifier: Modifier = Modifier) {
-    ProjectMenu(items = listOf(
-        ProjectMenuContent("Calculator", R.drawable.skill),
-        ProjectMenuContent("Calculator", R.drawable.skill),
-        ProjectMenuContent("Calculator", R.drawable.skill),
-        ProjectMenuContent("Calculator", R.drawable.skill),
-        ProjectMenuContent("Calculator", R.drawable.skill),
-    ))
+fun Pre1(modifier: Modifier = Modifier) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Red)
+    ) {
+        Row {
+            ProjectMenuItem(item = ProjectMenuContent(title = "contact", iconId = R.drawable.calc))
+            ProjectMenuItem(item = ProjectMenuContent(title = "contact", iconId = R.drawable.calc))
+
+        }
+    }
 }

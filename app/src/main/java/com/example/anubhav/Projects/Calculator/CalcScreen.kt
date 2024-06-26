@@ -1,11 +1,10 @@
-package com.example.anubhav.Calculator
+package com.example.anubhav.Projects.Calculator
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -31,7 +30,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -45,16 +43,17 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.anubhav.SharedStateViewModel
 import com.example.anubhav.ui.theme.ButtonColor
 import com.example.anubhav.ui.theme.ButtonTextColor
 import com.example.anubhav.ui.theme.GradColor1
-import com.example.anubhav.ui.theme.NumButtonColor
 import com.example.anubhav.ui.theme.GradColor2
+import com.example.anubhav.ui.theme.NumButtonColor
+import org.mariuszgromada.math.mxparser.Expression
+import org.mariuszgromada.math.mxparser.mXparser
 
-import com.example.anubhav.SharedStateViewModel
-import org.mariuszgromada.math.mxparser.*
 @Composable
-fun HomeScreen() {
+fun CalcScreen() {
     val viewModel: SharedStateViewModel = viewModel()
     val state by animateDpAsState(
         targetValue = viewModel.sizeState,
@@ -79,8 +78,8 @@ fun HomeScreen() {
                 .fillMaxSize()
         ) {
             Column {
-                display()
-                sciKeyPad(ButtonSize = if (viewModel.swapState) 75.dp else 62.dp, rowSize = state)
+                Display()
+                SciKeyPad(ButtonSize = if (viewModel.swapState) 75.dp else 62.dp, rowSize = state)
             }
 
         }
@@ -89,9 +88,8 @@ fun HomeScreen() {
 }
 
 @Composable
-fun display() {
+fun Display() {
     val viewModel: SharedStateViewModel = viewModel()
-    var interactionSource = remember { MutableInteractionSource() }
 
     Card(
         modifier = Modifier
@@ -295,7 +293,7 @@ fun display() {
 
 
 @Composable
-fun sciKeyPad(ButtonSize: Dp, rowSize: Dp) {
+fun SciKeyPad(ButtonSize: Dp, rowSize: Dp) {
     val viewModel: SharedStateViewModel = viewModel()
     val answer = Expression(viewModel.element)
 
@@ -1143,478 +1141,5 @@ fun sciKeyPad(ButtonSize: Dp, rowSize: Dp) {
 
 
         }
-    }
-}
-
-@Composable
-fun normKeyPad(ButtonSize: Dp = 75.dp) {
-
-    val viewModel: SharedStateViewModel = viewModel()
-
-    Row(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(top = 6.dp, start = 12.dp, end = 12.dp, bottom = 12.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .padding(bottom = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "(",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "7",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "4",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "1",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-
-                    text = if (viewModel.swapState) "00"
-                    else "e",
-                    color = ButtonTextColor,
-                    fontSize = if (viewModel.swapState) 19.sp
-                    else 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-        }
-
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .padding(bottom = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = ")",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "8",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "5",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "2",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "0",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-        }
-
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .padding(bottom = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "%",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "9",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "6",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "3",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = ".",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-        }
-
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .padding(bottom = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "/",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "*",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "-",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "+",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .size(ButtonSize),
-                shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(ButtonColor),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 0.dp
-                )
-            ) {
-
-                Text(
-                    text = "=",
-                    color = ButtonTextColor,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-
-
-        }
-
-
     }
 }

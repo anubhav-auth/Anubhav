@@ -21,5 +21,4 @@ class SharedStateViewModel: ViewModel() {
 
     //mainScreen
     var selectedItemIndex by mutableStateOf(0)
-
 }

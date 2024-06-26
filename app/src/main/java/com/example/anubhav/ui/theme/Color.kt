@@ -28,4 +28,4 @@ val main_white = Color(0xFFFFFFFF)
 //for buttonpress
 val main_purpleDark = Color(0xFFAB93E0)
 val main_yellowDark = Color(0xFFDFDD56)
-val text_grey = Color(0xFF6C6C6C)
+val main_text_grey = Color(0xFF6C6C6C)
