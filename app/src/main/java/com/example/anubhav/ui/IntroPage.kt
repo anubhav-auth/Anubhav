@@ -1,4 +1,4 @@
-package com.example.anubhav.ui.theme
+package com.example.anubhav.ui
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -27,42 +27,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.anubhav.R
+import com.example.anubhav.ui.theme.MyFonts
+import com.example.anubhav.ui.theme.main_black
+import com.example.anubhav.ui.theme.main_orange
+import com.example.anubhav.ui.theme.main_white
 
 
 @Composable
 fun IntroPage(
-    tag: String, navController: NavController
+    mainList:List<Project>, tag: String, navController: NavController
 ) {
-    Log.d("myTag", "got inside introScreen")
-    val projects = listOf(
-        Project(
-            "calc",
-            "Calculator",
-            stringResource(id = R.string.calc_intro),
-            R.drawable.calc,
-            R.drawable.calc,
-            listOf("KOTLIN", "JETPACK COMPOSE", "MXPARSER", "ANDROID")
-        ),
-        Project(
-            "notes",
-            "NOTES",
-            stringResource(id = R.string.notes_intro),
-            R.drawable.notes,
-            R.drawable.notes,
-            listOf("KOTLIN", "JETPACK COMPOSE", "ROOM", "ANDROID", "KOTLIN", "JETPACK COMPOSE", "ROOM", "ANDROID", "KOTLIN", "JETPACK COMPOSE", "ROOM", "ANDROID", "KOTLIN", "JETPACK COMPOSE", "ROOM", "ANDROID", )
-
-            )
-    )
-
-    val project = projects.find { it.tag == tag }
+    val project = mainList.find { it.tag == tag }
 
     if (project != null) {
         IntroScreen(project = project, navController)
@@ -112,7 +93,7 @@ fun IntroScreen(project: Project, navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = painterResource(id = project.imgId1),
+                    painter = painterResource(id = project.imgId2),
                     contentDescription = null,
                     modifier = Modifier.size(200.dp)
                 )
@@ -175,14 +156,7 @@ fun IntroChip(text: String) {
     }
 }
 
-data class Project(
-    val tag: String,
-    val title: String,
-    val description: String,
-    val imgId1: Int,
-    val imgId2: Int,
-    val stack: List<String>
-)
+
 
 @Preview
 @Composable

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -52,7 +53,7 @@ android {
 dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
-    val lifecycle_version = "2.8.2"
+    val lifecycle_version = ""
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -61,8 +62,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
-    implementation("org.mariuszgromada.math:MathParser.org-mXparser:5.2.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -71,7 +70,37 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //glasmorphc effect
+//  glasmorphc effect
     implementation("dev.chrisbanes.haze:haze:0.7.0")
     implementation("dev.chrisbanes.haze:haze-materials:0.7.0")
+
+//  retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+//  viewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+
+//  coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("io.coil-kt:coil:2.6.0")
+
+
+//  palette
+    implementation("androidx.palette:palette:1.0.0")
+
+//  room
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+//  icon extended pack
+    implementation("androidx.compose.material:material-icons-extended:1.6.4")
+
+//  mxparser calc library
+    implementation("org.mariuszgromada.math:MathParser.org-mXparser:5.2.1")
 }

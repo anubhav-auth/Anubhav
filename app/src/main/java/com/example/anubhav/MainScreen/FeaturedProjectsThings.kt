@@ -31,13 +31,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.anubhav.ui.Project
 import com.example.anubhav.ui.theme.MyFonts
 import com.example.anubhav.ui.theme.main_grey
 import com.example.anubhav.ui.theme.main_orange
 import com.example.anubhav.ui.theme.main_white
 
 @Composable
-fun FeaturedProjectsMenu(items: List<FeaturedProjectsContent>) {
+fun FeaturedProjectsMenu(items: List<Project>) {
     LazyRow {
         itemsIndexed(items) { _, item ->
             FeaturedProjectsItem(item = item)
@@ -46,7 +47,7 @@ fun FeaturedProjectsMenu(items: List<FeaturedProjectsContent>) {
 }
 
 @Composable
-fun FeaturedProjectsItem(item: FeaturedProjectsContent) {
+fun FeaturedProjectsItem(item: Project) {
     Card(
         modifier = Modifier
             .padding(horizontal = 15.dp, vertical = 21.dp)
@@ -68,7 +69,7 @@ fun FeaturedProjectsItem(item: FeaturedProjectsContent) {
                 modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = painterResource(id = item.imgId),
+                    painter = painterResource(id = item.imgId1),
                     contentDescription = null,
                     modifier = Modifier
                         .clip(
@@ -93,7 +94,7 @@ fun FeaturedProjectsItem(item: FeaturedProjectsContent) {
                     fontFamily = MyFonts.leagueSpartan,
                     fontSize = 20.sp
                 )
-                FeatureDynamicChip(chipText = item.techStack)
+                FeatureDynamicChip(chipText = item.stack)
             }
         }
 

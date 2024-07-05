@@ -29,3 +29,8 @@ val main_white = Color(0xFFFFFFFF)
 val main_purpleDark = Color(0xFFAB93E0)
 val main_yellowDark = Color(0xFFDFDD56)
 val main_text_grey = Color(0xFF6C6C6C)
+
+//for pokedex
+val backGrad2 = Color(0xFF17191D)
+val backGrad1 = Color(0xFF2C3137)
+val pokemonListItemBack = Color(0xFF2E3339)

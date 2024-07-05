@@ -1,5 +1,6 @@
 package com.example.anubhav.MainScreen
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -27,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.anubhav.ui.Project
 import com.example.anubhav.R
 import com.example.anubhav.ui.theme.MyFonts
 import com.example.anubhav.ui.theme.main_black
@@ -36,8 +38,9 @@ import com.example.anubhav.ui.theme.main_purpleDark
 import com.example.anubhav.ui.theme.main_white
 
 @Composable
-fun MainScreen(navController: NavController) {
+fun MainScreen(mainList: List<Project>, navController: NavController, context: Context) {
     val scrollState = rememberScrollState()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -81,22 +84,7 @@ fun MainScreen(navController: NavController) {
             BlockHeading(title = "Featured Projects")
 
             FeaturedProjectsMenu(
-                items = listOf(
-                    FeaturedProjectsContent(
-                        tag = "calc",
-                        title = "Calculator",
-                        imgId = R.drawable.calc,
-                        techStack = listOf("kotlin", "jetpackCompose", "MXParser"),
-                        navController = navController
-                    ), FeaturedProjectsContent(
-                        tag = "notes",
-                        title = "Notes app",
-                        imgId = R.drawable.notes,
-                        techStack = listOf("kotlin", "jetpackCompose", "Room"),
-                        navController = navController
-                    )
-
-                )
+                items = mainList
             )
 
 
@@ -115,6 +103,8 @@ fun MainScreen(navController: NavController) {
                 ), modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
+
+
 }
 
 @Composable

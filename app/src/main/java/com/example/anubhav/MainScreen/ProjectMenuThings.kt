@@ -82,8 +82,8 @@ fun Pre1(modifier: Modifier = Modifier) {
             .background(Color.Red)
     ) {
         Row {
-            ProjectMenuItem(item = ProjectMenuContent(title = "contact", iconId = R.drawable.calc))
-            ProjectMenuItem(item = ProjectMenuContent(title = "contact", iconId = R.drawable.calc))
+            ProjectMenuItem(item = ProjectMenuContent(title = "contact", iconId = R.drawable.calc1))
+            ProjectMenuItem(item = ProjectMenuContent(title = "contact", iconId = R.drawable.calc1))
 
         }
     }
